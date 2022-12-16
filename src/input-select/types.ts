@@ -10,7 +10,7 @@ import {
 // SHARED PROPS
 // =============================================================================
 export interface InputSelectOptionsProps<T> {
-    options: T[] | undefined;
+    options: T[];
     /**
      * Used when options are loaded from an api call.
      * Values: "loading" | "fail" | "success"
@@ -19,9 +19,9 @@ export interface InputSelectOptionsProps<T> {
     /** Specifies the truncation type. Truncated text will be replaced with ellipsis. Values: "middle" | "end" */
     optionTruncationType?: TruncateType | undefined;
 
-    onShowOptions?: () => void | undefined;
-    onHideOptions?: () => void | undefined;
-    onRetry?: () => void | undefined;
+    onShowOptions?: (() => void) | undefined;
+    onHideOptions?: (() => void) | undefined;
+    onRetry?: (() => void) | undefined;
 }
 
 export interface InputSelectSharedProps<T> {
@@ -55,11 +55,11 @@ export interface InputSelectProps<T, V>
         DropdownSearchProps<T>,
         DropdownStyleProps {
     selectedOption?: T | undefined;
-    onSelectOption?: (option: T, extractedValue: V) => void | undefined;
+    onSelectOption?: ((option: T, extractedValue: V) => void) | undefined;
     /** Function to derive display value for selected option */
-    displayValueExtractor?: (option: T) => string | undefined;
+    displayValueExtractor?: ((option: T) => string) | undefined;
     /** Function to convert value into a string */
-    valueToStringFunction?: (value: V) => string | undefined;
+    valueToStringFunction?: ((value: V) => string) | undefined;
 }
 
 /** To be exposed for Form component inheritance */
@@ -79,7 +79,7 @@ export interface InputMultiSelectProps<T, V>
         DropdownSearchProps<T>,
         DropdownStyleProps {
     selectedOptions?: T[] | undefined;
-    onSelectOptions?: (options: T[]) => void | undefined;
+    onSelectOptions?: ((options: T[]) => void) | undefined;
 }
 
 /** To be exposed for Form component inheritance */
